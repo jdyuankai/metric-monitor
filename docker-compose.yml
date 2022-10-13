@@ -43,6 +43,7 @@ services:
     user: root
     environment:
       ELASTICSEARCH_HOSTS: http://node01:9200
+      HOSTNAME: ${HOSTNAME}
     volumes:
       - metricbeat-data01:/usr/share/metricbeat/data
       - /var/run/docker.sock:/var/run/docker.sock

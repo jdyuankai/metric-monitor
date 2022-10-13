@@ -52,6 +52,22 @@ services:
     depends_on:
       - node01
 
+  filebeat:
+    image: elastic/filebeat:7.11.1
+    user: root
+    volumes:
+        - /root/code/metric-monitor-main/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+        - /var/log/:/usr/share/filebeat/var/log/:ro
+        #- /var/lib/docker/containers:/var/lib/docker/containers:ro
+        #- /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      ELASTICSEARCH_HOSTS: http://101.251.207.186:9200
+      HOSTNAME: ${HOSTNAME}
+    networks:
+      - es-network
+    depends_on:
+      - node01
+
 volumes:
   es-data01:
     driver: local

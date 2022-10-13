@@ -61,7 +61,7 @@ services:
         #- /var/lib/docker/containers:/var/lib/docker/containers:ro
         #- /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
-      ELASTICSEARCH_HOSTS: http://101.251.207.186:9200
+      ELASTICSEARCH_HOSTS: http://node01:9200
       HOSTNAME: ${HOSTNAME}
     networks:
       - es-network
